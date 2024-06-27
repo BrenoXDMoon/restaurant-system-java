@@ -7,10 +7,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CreateCheckCommand {
 
-    CreateCheckUseCase useCase;
+    private final CreateCheckUseCase useCase;
 
-    //TODO: Alterar retorno Object para uma classe DTO
-    public Object execute(CreateCheckDTO createCheckDTO) {
-        return useCase.createCheck(createCheckDTO);
+    public CreateCheckCommand(CreateCheckUseCase useCase) {
+        this.useCase = useCase;
+    }
+
+    public void execute(CreateCheckDTO createCheckDTO) {
+        useCase.createCheck(createCheckDTO);
     }
 }

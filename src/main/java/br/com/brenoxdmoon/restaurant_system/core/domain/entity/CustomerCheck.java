@@ -2,6 +2,7 @@ package br.com.brenoxdmoon.restaurant_system.core.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,12 +14,14 @@ import java.util.List;
 @Entity
 public class CustomerCheck extends DomainEntity {
 
+    private String customerName;
+    private String customerPhoneNumber;
+
     @OneToMany
     List<Item> items;
 
-    private String customerName;
-    
-    private BigDecimal getTotal(){
+    @Transient
+    private BigDecimal getTotal() {
         return items.stream().map(Item::getPrice).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 

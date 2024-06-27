@@ -14,6 +14,7 @@ public class Item extends DomainEntity {
     private String name;
     private String code;
     private String description;
+    private Integer amount;
     private BigDecimal price;
 
 }
