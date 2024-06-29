@@ -1,7 +1,7 @@
 package br.com.brenoxdmoon.restaurant_system.core.domain.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +17,7 @@ public class CustomerCheck extends DomainEntity {
     private String customerName;
     private String customerPhoneNumber;
 
-    @OneToMany
+    @ManyToMany
     List<Item> items;
 
     @Transient
