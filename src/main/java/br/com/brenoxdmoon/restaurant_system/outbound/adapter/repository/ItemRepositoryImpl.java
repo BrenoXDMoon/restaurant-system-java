@@ -19,4 +19,9 @@ public class ItemRepositoryImpl implements ItemRepository {
         //TODO: adicionar tratamento para casos de não encontrado
         return repository.findByCode(code).orElseThrow(NullPointerException::new);
     }
+
+    @Override
+    public void save(Item item) {
+        repository.save(item);
+    }
 }

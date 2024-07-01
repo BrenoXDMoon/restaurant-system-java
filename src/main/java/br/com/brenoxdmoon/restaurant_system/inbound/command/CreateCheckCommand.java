@@ -13,7 +13,7 @@ public class CreateCheckCommand {
         this.useCase = useCase;
     }
 
-    public void execute(CreateCheckDTO createCheckDTO) {
-        useCase.createCheck(createCheckDTO);
+    public void execute(CreateCheckDTO dto) {
+        useCase.createCheck(dto);
     }
 }

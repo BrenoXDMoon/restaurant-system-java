@@ -9,22 +9,22 @@ import br.com.brenoxdmoon.restaurant_system.core.ports.outbound.ItemRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CreateCheckServiceImpl implements CreateCheckUseCase {
+public class CustomerCheckServiceImpl implements CreateCheckUseCase {
 
     private final ItemRepository itemRepository;
     private final CustomerCheckMapper mapper;
     private final CustomerCheckRepository repository;
 
-    public CreateCheckServiceImpl(CustomerCheckRepository repository, CustomerCheckMapper mapper, ItemRepository itemRepository) {
+    public CustomerCheckServiceImpl(CustomerCheckRepository repository, CustomerCheckMapper mapper, ItemRepository itemRepository) {
         this.repository = repository;
         this.mapper = mapper;
         this.itemRepository = itemRepository;
     }
 
     @Override
-    public void createCheck(CreateCheckDTO createCheckDTO) {
+    public void createCheck(CreateCheckDTO dto) {
 
-        CustomerCheck customerCheck = mapper.toCustomerCheck(createCheckDTO);
+        CustomerCheck customerCheck = mapper.toCustomerCheck(dto);
         customerCheck.getItems().replaceAll(item -> itemRepository.getItemByCode(item.getCode()));
         repository.save(customerCheck);
     }
